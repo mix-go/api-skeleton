@@ -1,18 +1,41 @@
 package commands
 
 import (
+    "context"
     "fmt"
     "github.com/mix-go/gin"
     "github.com/mix-go/mix-api-skeleton/globals"
     "github.com/mix-go/mix-api-skeleton/routes/api"
+    "net/http"
+    "os"
+    "os/signal"
+    "syscall"
+    "time"
 )
 
 type APICommand struct {
 }
 
 func (t *APICommand) Main() {
-    // route
+    // server
     router := gin.New(api.RouteDefinitions...)
+    srv := &http.Server{
+        Addr:    ":8080",
+        Handler: router,
+    }
+
+    // signal
+    ch := make(chan os.Signal)
+    signal.Notify(ch, syscall.SIGHUP, syscall.SIGINT, syscall.SIGTERM)
+    go func() {
+        <-ch
+        ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+        defer cancel()
+        if err := srv.Shutdown(ctx); err != nil {
+            globals.Logger().Errorf("Server shutdown error: %s", err)
+        }
+    }()
+
     // logger
     router.Use(gin.LogrusWithFormatter(globals.Logger(), func(params gin.LogFormatterParams) string {
         return fmt.Sprintf("%s|%s|%d|%s",
@@ -22,8 +45,9 @@ func (t *APICommand) Main() {
             params.ClientIP,
         )
     }))
-    // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
-    if err := router.Run(); err != nil {
+
+    // run
+    if err := srv.ListenAndServe(); err != nil {
         panic(err)
     }
 }

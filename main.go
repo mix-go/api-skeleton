@@ -1,13 +1,13 @@
 package main
 
 import (
-    "github.com/mix-go/mix-api-skeleton/globals"
-    "github.com/mix-go/mix-api-skeleton/manifest"
     "fmt"
     "github.com/jinzhu/configor"
-    console2 "github.com/mix-go/console"
+    "github.com/mix-go/console"
     "github.com/mix-go/console/argv"
     "github.com/mix-go/dotenv"
+    "github.com/mix-go/mix-api-skeleton/globals"
+    "github.com/mix-go/mix-api-skeleton/manifest"
 )
 
 func init() {
@@ -25,5 +25,5 @@ func init() {
 
 func main() {
     // App
-    console2.NewApplication(manifest.ApplicationDefinition, "eventDispatcher", "error").Run()
+    console.NewApplication(manifest.ApplicationDefinition, "eventDispatcher", "error").Run()
 }
