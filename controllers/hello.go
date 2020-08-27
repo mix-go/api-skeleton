@@ -9,5 +9,8 @@ type HelloController struct {
 }
 
 func (t *HelloController) Index(c *gin.Context) {
-    c.String(http.StatusOK, "hello, world!")
+    c.JSON(http.StatusOK, gin.H{
+        "status":  http.StatusOK,
+        "message": "hello, world!",
+    })
 }
