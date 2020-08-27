@@ -12,12 +12,8 @@ func init() {
             Usage: "\tStart the api server",
             Options: []console.OptionDefinition{
                 {
-                    Names: []string{"h", "host"},
-                    Usage: "\tListen to the specified host",
-                },
-                {
-                    Names: []string{"p", "port"},
-                    Usage: "\tListen to the specified port",
+                    Names: []string{"a", "addr"},
+                    Usage: "\tListen to the specified address",
                 },
                 {
                     Names: []string{"d", "daemon"},
