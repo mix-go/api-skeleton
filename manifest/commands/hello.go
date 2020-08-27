@@ -1,27 +1,30 @@
 package commands
 
 import (
-    "github.com/mix-go/mix-api-skeleton/commands"
-    "github.com/mix-go/bean"
     "github.com/mix-go/console"
+    "github.com/mix-go/mix-api-skeleton/commands"
 )
 
 func init() {
     Commands = append(Commands,
         console.CommandDefinition{
-            Name:  "hello",
-            Usage: "\tEcho demo",
+            Name:  "api",
+            Usage: "\tStart the api server",
             Options: []console.OptionDefinition{
                 {
-                    Names: []string{"n", "name"},
-                    Usage: "Your name",
+                    Names: []string{"h", "host"},
+                    Usage: "\tListen to the specified host",
                 },
                 {
-                    Names: []string{"say"},
-                    Usage: "\tSay ...",
+                    Names: []string{"p", "port"},
+                    Usage: "\tListen to the specified port",
+                },
+                {
+                    Names: []string{"d", "daemon"},
+                    Usage: "\tRun in the background",
                 },
             },
-            Reflect: bean.NewReflect(commands.HelloCommand{}),
+            Command: &commands.APICommand{},
         },
     )
 }

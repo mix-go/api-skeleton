@@ -7,6 +7,7 @@ replace (
 	github.com/mix-go/console => ../mix/src/console
 	github.com/mix-go/dotenv => ../mix/src/dotenv
 	github.com/mix-go/event => ../mix/src/event
+	github.com/mix-go/gin => ../mix/src/gin
 	github.com/mix-go/logrus => ../mix/src/logrus
 	github.com/mix-go/workerpool => ../mix/src/workerpool
 )
@@ -19,8 +20,9 @@ require (
 	github.com/mix-go/console v1.0.1
 	github.com/mix-go/dotenv v1.0.1
 	github.com/mix-go/event v1.0.1
+	github.com/mix-go/gin v1.0.1
 	github.com/mix-go/logrus v1.0.1
 	github.com/mix-go/workerpool v1.0.1
-	gopkg.in/yaml.v2 v2.3.0 // indirect
+	golang.org/x/sys v0.0.0-20200826173525-f9321e4c35a6 // indirect
 	gorm.io/gorm v0.2.34 // indirect
 )
