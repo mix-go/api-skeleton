@@ -21,7 +21,7 @@ func welcome() {
     fmt.Println("")
     fmt.Println(fmt.Sprintf("Server      Name:     %s", "mix-api"))
     fmt.Println(fmt.Sprintf("System      Name:     %s", runtime.GOOS))
-    fmt.Println(fmt.Sprintf("Go          Version:  %s", runtime.Version()))
-    fmt.Println(fmt.Sprintf("Framework   Version:  %s", console.App().AppVersion))
+    fmt.Println(fmt.Sprintf("Go          Version:  %s", runtime.Version()[2:]))
+    fmt.Println(fmt.Sprintf("Framework   Version:  %s", console.Version))
     fmt.Println(fmt.Sprintf("Listen      Addr:     %s", flag.Match("a", "addr").String(":8080")))
 }
