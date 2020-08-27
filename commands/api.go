@@ -3,12 +3,14 @@ package commands
 import (
     "context"
     "fmt"
+    "github.com/mix-go/dotenv"
     "github.com/mix-go/gin"
     "github.com/mix-go/mix-api-skeleton/globals"
     "github.com/mix-go/mix-api-skeleton/routes/api"
     "net/http"
     "os"
     "os/signal"
+    "strings"
     "syscall"
     "time"
 )
@@ -18,6 +20,7 @@ type APICommand struct {
 
 func (t *APICommand) Main() {
     // server
+    gin.SetMode(dotenv.Getenv("GIN_MODE").String(gin.ReleaseMode))
     router := gin.New(api.RouteDefinitions...)
     srv := &http.Server{
         Addr:    ":8080",
@@ -47,7 +50,7 @@ func (t *APICommand) Main() {
     }))
 
     // run
-    if err := srv.ListenAndServe(); err != nil {
+    if err := srv.ListenAndServe(); err != nil && !strings.Contains(err.Error(), "http: Server closed") {
         panic(err)
     }
 }
