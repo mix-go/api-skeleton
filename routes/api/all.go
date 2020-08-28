@@ -14,5 +14,10 @@ func init() {
             hello := controllers.HelloController{}
             hello.Index(ctx)
         }).Use(middleware.CorsMiddleware())
+
+        router.GET("auth", func(ctx *gin.Context) {
+            auth := controllers.AuthController{}
+            auth.Index(ctx)
+        })
     })
 }

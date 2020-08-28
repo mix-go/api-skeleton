@@ -4,11 +4,10 @@ import (
     "fmt"
     "github.com/dgrijalva/jwt-go"
     "github.com/gin-gonic/gin"
+    "github.com/mix-go/dotenv"
     "net/http"
     "strings"
 )
-
-var hmacSampleSecret = []byte("my_secret_key")
 
 func AuthMiddleware() gin.HandlerFunc {
     return func(c *gin.Context) {
@@ -16,8 +15,8 @@ func AuthMiddleware() gin.HandlerFunc {
         tokenString := c.GetHeader("Authorization")
         if strings.Index(tokenString, "Bearer ") != 0 {
             c.JSON(http.StatusInternalServerError, gin.H{
-                "status":  http.StatusOK,
-                "message": "",
+                "status":  http.StatusInternalServerError,
+                "message": "Failed to extract token",
             })
             return
         }
@@ -30,11 +29,11 @@ func AuthMiddleware() gin.HandlerFunc {
             }
 
             // hmacSampleSecret is a []byte containing your secret, e.g. []byte("my_secret_key")
-            return hmacSampleSecret, nil
+            return []byte(dotenv.Getenv("HMAC_SECRET").String()), nil
         })
         if err != nil {
             c.JSON(http.StatusInternalServerError, gin.H{
-                "status":  http.StatusOK,
+                "status":  http.StatusInternalServerError,
                 "message": err.Error(),
             })
             return
