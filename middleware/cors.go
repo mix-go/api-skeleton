@@ -12,6 +12,7 @@ func CorsMiddleware() gin.HandlerFunc {
         c.Header("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS")
         if c.Request.Method == "OPTIONS" {
             c.String(http.StatusOK, "")
+            c.Abort()
             return
         }
 

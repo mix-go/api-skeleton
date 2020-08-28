@@ -10,12 +10,15 @@ var RouteDefinitions []func(router *gin.Engine)
 
 func init() {
     RouteDefinitions = append(RouteDefinitions, func(router *gin.Engine) {
-        router.GET("hello", func(ctx *gin.Context) {
-            hello := controllers.HelloController{}
-            hello.Index(ctx)
-        }).Use(middleware.CorsMiddleware())
+        router.GET("hello",
+            middleware.CorsMiddleware(),
+            func(ctx *gin.Context) {
+                hello := controllers.HelloController{}
+                hello.Index(ctx)
+            },
+        )
 
-        router.GET("auth", func(ctx *gin.Context) {
+        router.POST("auth", func(ctx *gin.Context) {
             auth := controllers.AuthController{}
             auth.Index(ctx)
         })

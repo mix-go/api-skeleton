@@ -16,8 +16,9 @@ func AuthMiddleware() gin.HandlerFunc {
         if strings.Index(tokenString, "Bearer ") != 0 {
             c.JSON(http.StatusInternalServerError, gin.H{
                 "status":  http.StatusInternalServerError,
-                "message": "Failed to extract token",
+                "message": "failed to extract token",
             })
+            c.Abort()
             return
         }
 
@@ -36,6 +37,7 @@ func AuthMiddleware() gin.HandlerFunc {
                 "status":  http.StatusInternalServerError,
                 "message": err.Error(),
             })
+            c.Abort()
             return
         }
 
