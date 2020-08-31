@@ -44,7 +44,7 @@ func (t *APICommand) Main() {
     }()
 
     // logger
-    router.Use(gin.LogrusWithFormatter(logger, func(params gin.LogFormatterParams) string {
+    router.Use(gin.LoggerWithFormatter(logger, func(params gin.LogFormatterParams) string {
         return fmt.Sprintf("%s|%s|%d|%s",
             params.Method,
             params.Path,
