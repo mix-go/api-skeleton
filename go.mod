@@ -19,12 +19,12 @@ require (
 	github.com/jinzhu/configor v1.2.0
 	github.com/jinzhu/gorm v1.9.16
 	github.com/mix-go/bean v1.0.8
-	github.com/mix-go/console v1.0.9
+	github.com/mix-go/console v1.0.15
 	github.com/mix-go/dotenv v1.0.1
-	github.com/mix-go/event v1.0.1
+	github.com/mix-go/event v1.0.15
 	github.com/mix-go/gin v1.0.9
-	github.com/mix-go/logrus v1.0.8
-	github.com/mix-go/workerpool v1.0.8
+	github.com/mix-go/logrus v1.0.15
+	github.com/mix-go/workerpool v1.0.15
 	golang.org/x/sys v0.0.0-20200826173525-f9321e4c35a6 // indirect
 	gorm.io/gorm v0.2.34 // indirect
 )
