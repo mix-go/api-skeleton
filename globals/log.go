@@ -6,5 +6,5 @@ import (
 )
 
 func Logger() *logrus.Logger {
-    return console.Context().Get("logger").(*logrus.Logger)
+    return console.Get("logger").(*logrus.Logger)
 }

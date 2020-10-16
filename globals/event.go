@@ -6,5 +6,5 @@ import (
 )
 
 func EventDispatcher() *event.Dispatcher {
-    return console.Context().Get("eventDispatcher").(*event.Dispatcher)
+    return console.Get("eventDispatcher").(*event.Dispatcher)
 }
