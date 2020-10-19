@@ -3,6 +3,7 @@ package commands
 import (
     "context"
     "fmt"
+    gin2 "github.com/gin-gonic/gin"
     "github.com/mix-go/console/flag"
     "github.com/mix-go/dotenv"
     "github.com/mix-go/gin"
@@ -22,8 +23,9 @@ type APICommand struct {
 func (t *APICommand) Main() {
     logger := globals.Logger()
 
-    // server
     gin.SetMode(dotenv.Getenv("GIN_MODE").String(gin.ReleaseMode))
+
+    // server
     router := gin.New(api.RouteDefinitionCallbacks...)
     srv := &http.Server{
         Addr:    flag.Match("a", "addr").String(":8080"),
@@ -42,6 +44,9 @@ func (t *APICommand) Main() {
             globals.Logger().Errorf("Server shutdown error: %s", err)
         }
     }()
+
+    // error handle
+    router.Use(gin2.Recovery())
 
     // logger
     router.Use(gin.LoggerWithFormatter(logger, func(params gin.LogFormatterParams) string {
