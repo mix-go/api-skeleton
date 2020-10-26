@@ -6,5 +6,5 @@ import (
 )
 
 func Redis() *redis.Client {
-    return console.Get("redis").(*redis.Client)
+    return console.App.Get("redis").(*redis.Client)
 }

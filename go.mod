@@ -26,6 +26,5 @@ require (
 	github.com/mix-go/logrus v1.0.16
 	github.com/mix-go/workerpool v1.0.17
 	github.com/sirupsen/logrus v1.6.0
-	golang.org/x/sys v0.0.0-20200826173525-f9321e4c35a6 // indirect
 	gorm.io/gorm v0.2.34 // indirect
 )

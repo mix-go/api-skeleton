@@ -6,5 +6,5 @@ import (
 )
 
 func DB() *gorm.DB {
-    return console.Get("db").(*gorm.DB)
+    return console.App.Get("db").(*gorm.DB)
 }
