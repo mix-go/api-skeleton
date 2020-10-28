@@ -5,7 +5,7 @@
 - 安装开发工具
 
 ~~~
-go get -u github.com/mix-go/mix@master
+go get -u github.com/mix-go/mix
 ~~~
 
 - 创建应用骨架
