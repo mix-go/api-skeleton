@@ -12,7 +12,7 @@ import (
 func Init() {
     // logger
     logger := Logger()
-    file := logrus.NewFileWriter(fmt.Sprintf("%s/../runtime/logs/mix.log", console.App.BasePath), 7, 200*1024*1024)
+    file := logrus.NewFileWriter(fmt.Sprintf("%s/../runtime/logs/mix.log", console.App.BasePath), 7, 0)
     writer := io.MultiWriter(os.Stdout, file)
     logger.SetOutput(writer)
     if console.App.Debug {
