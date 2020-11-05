@@ -1,4 +1,4 @@
-package api
+package routes
 
 import (
     "github.com/gin-gonic/gin"
@@ -21,8 +21,8 @@ func init() {
         router.POST("users/add",
             middleware.CorsMiddleware(),
             func(ctx *gin.Context) {
-                hello := controllers.AddUserController{}
-                hello.Index(ctx)
+                hello := controllers.UserController{}
+                hello.Add(ctx)
             },
         )
 

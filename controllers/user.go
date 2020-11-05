@@ -8,10 +8,10 @@ import (
     "time"
 )
 
-type AddUserController struct {
+type UserController struct {
 }
 
-func (t *AddUserController) Index(c *gin.Context) {
+func (t *UserController) Add(c *gin.Context) {
     db := globals.DB()
     if err := db.Create(&models.User{
         Name:     c.Request.PostFormValue("name"),
