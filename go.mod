@@ -9,7 +9,6 @@ replace (
 	github.com/mix-go/event => ../mix/src/event
 	github.com/mix-go/gin => ../mix/src/gin
 	github.com/mix-go/logrus => ../mix/src/logrus
-	github.com/mix-go/workerpool => ../mix/src/workerpool
 )
 
 require (
@@ -24,7 +23,6 @@ require (
 	github.com/mix-go/event v1.0.16
 	github.com/mix-go/gin v1.0.18
 	github.com/mix-go/logrus v1.0.18
-	github.com/mix-go/workerpool v1.0.18
 	github.com/sirupsen/logrus v1.6.0
 	gorm.io/gorm v0.2.34 // indirect
 )
