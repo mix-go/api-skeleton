@@ -17,7 +17,7 @@ func (t *UserController) Add(c *gin.Context) {
         Name:     c.Request.PostFormValue("name"),
         CreateAt: time.Now(),
     }).Error; err != nil {
-        c.JSON(http.StatusOK, gin.H{
+        c.JSON(http.StatusInternalServerError, gin.H{
             "status":  http.StatusInternalServerError,
             "message": err.Error(),
         })

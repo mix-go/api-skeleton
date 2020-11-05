@@ -19,7 +19,7 @@ func init() {
         )
 
         router.POST("users/add",
-            middleware.CorsMiddleware(),
+            middleware.AuthMiddleware(),
             func(ctx *gin.Context) {
                 hello := controllers.UserController{}
                 hello.Add(ctx)
