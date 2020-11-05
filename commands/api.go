@@ -17,6 +17,8 @@ import (
     "time"
 )
 
+const Addr = ":8080"
+
 type APICommand struct {
 }
 
@@ -28,7 +30,7 @@ func (t *APICommand) Main() {
     // server
     router := gin.New(api.RouteDefinitionCallbacks...)
     srv := &http.Server{
-        Addr:    flag.Match("a", "addr").String(":8080"),
+        Addr:    flag.Match("a", "addr").String(Addr),
         Handler: router,
     }
 
