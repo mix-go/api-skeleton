@@ -2,8 +2,8 @@ package api
 
 import (
     "github.com/gin-gonic/gin"
-    "github.com/mix-go/mix-api-skeleton/controllers"
-    "github.com/mix-go/mix-api-skeleton/middleware"
+    "github.com/mix-go/api-skeleton/controllers"
+    "github.com/mix-go/api-skeleton/middleware"
 )
 
 var RouteDefinitionCallbacks []func(router *gin.Engine)

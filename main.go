@@ -6,8 +6,8 @@ import (
     "github.com/mix-go/console"
     "github.com/mix-go/console/argv"
     "github.com/mix-go/dotenv"
-    "github.com/mix-go/mix-api-skeleton/globals"
-    "github.com/mix-go/mix-api-skeleton/manifest"
+    "github.com/mix-go/api-skeleton/globals"
+    "github.com/mix-go/api-skeleton/manifest"
 )
 
 func init() {

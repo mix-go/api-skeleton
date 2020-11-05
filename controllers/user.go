@@ -2,8 +2,8 @@ package controllers
 
 import (
     "github.com/gin-gonic/gin"
-    "github.com/mix-go/mix-api-skeleton/globals"
-    "github.com/mix-go/mix-api-skeleton/models"
+    "github.com/mix-go/api-skeleton/globals"
+    "github.com/mix-go/api-skeleton/models"
     "net/http"
     "time"
 )

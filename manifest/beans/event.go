@@ -3,7 +3,7 @@ package beans
 import (
     "github.com/mix-go/bean"
     "github.com/mix-go/event"
-    "github.com/mix-go/mix-api-skeleton/listeners"
+    "github.com/mix-go/api-skeleton/listeners"
 )
 
 func Event() {

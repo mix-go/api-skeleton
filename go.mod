@@ -1,4 +1,4 @@
-module github.com/mix-go/mix-api-skeleton
+module github.com/mix-go/api-skeleton
 
 go 1.13
 
