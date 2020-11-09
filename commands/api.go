@@ -27,7 +27,7 @@ func (t *APICommand) Main() {
 
     // server
     gin.SetMode(dotenv.Getenv("GIN_MODE").String(gin.ReleaseMode))
-    router := gin.New(routes.RouteDefinitionCallbacks...)
+    router := gin.New(routes.RouteDefinitionCallbacks()...)
     srv := &http.Server{
         Addr:    flag.Match("a", "addr").String(Addr),
         Handler: router,

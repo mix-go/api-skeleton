@@ -6,10 +6,8 @@ import (
     "github.com/mix-go/api-skeleton/middleware"
 )
 
-var RouteDefinitionCallbacks []func(router *gin.Engine)
-
-func init() {
-    RouteDefinitionCallbacks = append(RouteDefinitionCallbacks, func(router *gin.Engine) {
+func RouteDefinitionCallbacks() (callbacks []func(router *gin.Engine)) {
+    callbacks = append(callbacks, func(router *gin.Engine) {
         router.GET("hello",
             middleware.CorsMiddleware(),
             func(ctx *gin.Context) {
@@ -31,4 +29,5 @@ func init() {
             auth.Index(ctx)
         })
     })
+    return
 }
