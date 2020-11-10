@@ -17,12 +17,12 @@ require (
 	github.com/go-redis/redis/v8 v8.0.0-beta.7
 	github.com/jinzhu/configor v1.2.0
 	github.com/jinzhu/gorm v1.9.16
-	github.com/mix-go/bean v1.0.21
-	github.com/mix-go/console v1.0.21
-	github.com/mix-go/dotenv v1.0.21
-	github.com/mix-go/event v1.0.21
-	github.com/mix-go/gin v1.0.21
-	github.com/mix-go/logrus v1.0.21
+	github.com/mix-go/bean v1.0.22
+	github.com/mix-go/console v1.0.22
+	github.com/mix-go/dotenv v1.0.22
+	github.com/mix-go/event v1.0.22
+	github.com/mix-go/gin v1.0.22
+	github.com/mix-go/logrus v1.0.22
 	github.com/sirupsen/logrus v1.6.0
 	gorm.io/gorm v0.2.34 // indirect
 )
