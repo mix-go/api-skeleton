@@ -18,7 +18,7 @@ require (
 	github.com/jinzhu/configor v1.2.0
 	github.com/jinzhu/gorm v1.9.16
 	github.com/mix-go/bean v1.0.22
-	github.com/mix-go/console v1.0.23
+	github.com/mix-go/console v1.0.24
 	github.com/mix-go/dotenv v1.0.22
 	github.com/mix-go/event v1.0.22
 	github.com/mix-go/gin v1.0.22
