@@ -32,6 +32,7 @@ func (t *APICommand) Main() {
         Addr:    flag.Match("a", "addr").String(Addr),
         Handler: router,
     }
+    globals.Server = srv
 
     // signal
     ch := make(chan os.Signal)
