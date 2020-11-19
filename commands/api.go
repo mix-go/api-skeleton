@@ -19,6 +19,8 @@ import (
 
 const Addr = ":8080"
 
+var Server *http.Server
+
 type APICommand struct {
 }
 
@@ -32,7 +34,7 @@ func (t *APICommand) Main() {
         Addr:    flag.Match("a", "addr").String(Addr),
         Handler: router,
     }
-    globals.Server = srv
+    Server = srv
 
     // signal
     ch := make(chan os.Signal)
