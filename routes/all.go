@@ -6,8 +6,10 @@ import (
     "github.com/mix-go/api-skeleton/middleware"
 )
 
-func RouteDefinitionCallbacks() (callbacks []func(router *gin.Engine)) {
-    callbacks = append(callbacks, func(router *gin.Engine) {
+func ApiDefinition() func(router *gin.Engine) {
+    return func(router *gin.Engine) {
+        router.Use(gin.Recovery()) // error handle
+
         router.GET("hello",
             middleware.CorsMiddleware(),
             func(ctx *gin.Context) {
@@ -28,6 +30,5 @@ func RouteDefinitionCallbacks() (callbacks []func(router *gin.Engine)) {
             auth := controllers.AuthController{}
             auth.Index(ctx)
         })
-    })
-    return
+    }
 }

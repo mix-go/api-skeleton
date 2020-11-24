@@ -3,7 +3,6 @@ package commands
 import (
     "context"
     "fmt"
-    gin2 "github.com/gin-gonic/gin"
     "github.com/mix-go/api-skeleton/globals"
     "github.com/mix-go/api-skeleton/routes"
     "github.com/mix-go/console/flag"
@@ -26,10 +25,11 @@ type APICommand struct {
 
 func (t *APICommand) Main() {
     logger := globals.Logger()
+    mode := dotenv.Getenv("GIN_MODE").String(gin.ReleaseMode)
 
     // server
-    gin.SetMode(dotenv.Getenv("GIN_MODE").String(gin.ReleaseMode))
-    router := gin.New(routes.RouteDefinitionCallbacks()...)
+    gin.SetMode(mode)
+    router := gin.New(routes.ApiDefinition())
     srv := &http.Server{
         Addr:    flag.Match("a", "addr").String(Addr),
         Handler: router,
@@ -48,18 +48,17 @@ func (t *APICommand) Main() {
         }
     }()
 
-    // error handle
-    router.Use(gin2.Recovery())
-
     // logger
-    router.Use(gin.LoggerWithFormatter(logger, func(params gin.LogFormatterParams) string {
-        return fmt.Sprintf("%s|%s|%d|%s",
-            params.Method,
-            params.Path,
-            params.StatusCode,
-            params.ClientIP,
-        )
-    }))
+    if mode != gin.ReleaseMode {
+        router.Use(gin.LoggerWithFormatter(logger, func(params gin.LogFormatterParams) string {
+            return fmt.Sprintf("%s|%s|%d|%s",
+                params.Method,
+                params.Path,
+                params.StatusCode,
+                params.ClientIP,
+            )
+        }))
+    }
 
     // run
     welcome()
