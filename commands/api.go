@@ -62,7 +62,7 @@ func (t *APICommand) Main() {
 
     // run
     welcome()
-    logger.Info("Server start")
+    logger.Infof("Server start at %s", srv.Addr)
     if err := srv.ListenAndServe(); err != nil && !strings.Contains(err.Error(), "http: Server closed") {
         panic(err)
     }
