@@ -1,29 +1,17 @@
 package main
 
 import (
-    "fmt"
-    "github.com/jinzhu/configor"
-    "github.com/mix-go/console"
-    "github.com/mix-go/console/argv"
-    "github.com/mix-go/dotenv"
-    "github.com/mix-go/api-skeleton/globals"
-    "github.com/mix-go/api-skeleton/manifest"
+	"github.com/mix-go/api-skeleton/commands"
+	_ "github.com/mix-go/api-skeleton/configor"
+	_ "github.com/mix-go/api-skeleton/di"
+	_ "github.com/mix-go/api-skeleton/dotenv"
+	"github.com/mix-go/dotenv"
+	"github.com/mix-go/xcli"
 )
 
-func init() {
-    // Env
-    if err := dotenv.Load(fmt.Sprintf("%s/../.env", argv.Program().Dir)); err != nil {
-        panic(err)
-    }
-    // Conf support YAML, JSON, TOML, Shell Environment
-    if err := configor.Load(&globals.Config, fmt.Sprintf("%s/../conf/config.json", argv.Program().Dir)); err != nil {
-        panic(err)
-    }
-    // Manifest
-    manifest.Init()
-}
-
 func main() {
-    // App
-    console.NewApplication(manifest.ApplicationDefinition, "eventDispatcher", "error").Run()
+	xcli.SetName("app").
+		SetVersion("0.0.0-alpha").
+		SetDebug(dotenv.Getenv("APP_DEBUG").Bool(false))
+	xcli.AddCommand(commands.Commands...).Run()
 }

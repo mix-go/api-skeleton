@@ -1,10 +1,13 @@
 package globals
 
 import (
-    "github.com/go-redis/redis/v8"
-    "github.com/mix-go/console"
+	"github.com/go-redis/redis/v8"
+	"github.com/mix-go/xdi"
 )
 
-func Redis() *redis.Client {
-    return console.App.Get("redis").(*redis.Client)
+func Redis() (client *redis.Client) {
+	if err := xdi.Populate("redis", &client); err != nil {
+		panic(err)
+	}
+	return
 }
