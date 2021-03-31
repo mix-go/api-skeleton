@@ -7,15 +7,15 @@ import (
 var Commands = []*xcli.Command{
 	{
 		Name:  "api",
-		Usage: "\tStart the api server",
+		Short: "\tStart the api server",
 		Options: []*xcli.Option{
 			{
 				Names: []string{"a", "addr"},
-				Usage: "\tListen to the specified address",
+				Short: "\tListen to the specified address",
 			},
 			{
 				Names: []string{"d", "daemon"},
-				Usage: "\tRun in the background",
+				Short: "\tRun in the background",
 			},
 		},
 		RunI: &APICommand{},
