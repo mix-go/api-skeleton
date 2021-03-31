@@ -1,28 +1,17 @@
 package controllers
 
 import (
-    "github.com/gin-gonic/gin"
-    "github.com/mix-go/api-skeleton/globals"
-    "github.com/mix-go/api-skeleton/models"
-    "net/http"
-    "time"
+	"github.com/gin-gonic/gin"
+	"net/http"
 )
 
 type UserController struct {
 }
 
 func (t *UserController) Add(c *gin.Context) {
-    db := globals.Gorm()
-    if err := db.Create(&models.User{
-        Name:     c.Request.PostFormValue("name"),
-        CreateAt: time.Now(),
-    }).Error; err != nil {
-        c.JSON(http.StatusInternalServerError, gin.H{
-            "status":  http.StatusInternalServerError,
-            "message": err.Error(),
-        })
-        return
-    }
+	// 执行数据库操作
+	// ...
+
     c.JSON(http.StatusOK, gin.H{
         "status":  http.StatusOK,
         "message": "ok",

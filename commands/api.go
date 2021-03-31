@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/gin-gonic/gin"
-	"github.com/mix-go/api-skeleton/globals"
+	"github.com/mix-go/api-skeleton/di"
 	"github.com/mix-go/api-skeleton/routes"
 	"github.com/mix-go/dotenv"
 	"github.com/mix-go/xcli/flag"
@@ -27,7 +27,7 @@ func (t *APICommand) Main() {
 		process.Daemon()
 	}
 
-	logger := globals.Logrus()
+	logger := di.Logrus()
 	addr := dotenv.Getenv("GIN_ADDR").String(":8080")
 	mode := dotenv.Getenv("GIN_MODE").String(gin.ReleaseMode)
 

@@ -2,8 +2,8 @@ package di
 
 import (
 	"github.com/go-redis/redis/v8"
-	"github.com/mix-go/dotenv"
 	"github.com/mix-go/xdi"
+	"github.com/mix-go/dotenv"
 	"time"
 )
 
@@ -24,4 +24,11 @@ func init() {
 	if err := xdi.Provide(&obj); err != nil {
 		panic(err)
 	}
+}
+
+func Redis() (client *redis.Client) {
+	if err := xdi.Populate("redis", &client); err != nil {
+		panic(err)
+	}
+	return
 }

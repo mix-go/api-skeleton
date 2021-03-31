@@ -1,17 +1,17 @@
 package di
 
 import (
+	_ "github.com/go-sql-driver/mysql"
 	"github.com/mix-go/dotenv"
 	"github.com/mix-go/xdi"
-	"gorm.io/driver/mysql"
-	"gorm.io/gorm"
+	"xorm.io/xorm"
 )
 
 func init() {
 	obj := xdi.Object{
-		Name: "gorm",
+		Name: "xorm",
 		New: func() (i interface{}, e error) {
-			return gorm.Open(mysql.Open(dotenv.Getenv("DATABASE_DSN").String()))
+			return xorm.NewEngine("mysql", dotenv.Getenv("DATABASE_DSN").String())
 		},
 		Singleton: true,
 	}
@@ -20,8 +20,8 @@ func init() {
 	}
 }
 
-func Gorm() (db *gorm.DB) {
-	if err := xdi.Populate("gorm", &db); err != nil {
+func Xorm() (db *xorm.Engine) {
+	if err := xdi.Populate("xorm", &db); err != nil {
 		panic(err)
 	}
 	return
