@@ -3,13 +3,13 @@
 - Install
 
 ~~~
-go get -u github.com/mix-go/xstart
+go get -u github.com/mix-go/mixcli
 ~~~
 
 - New project
 
 ~~~
-xstart new hello
+mixcli new hello
 ~~~
 
 ~~~
