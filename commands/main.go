@@ -11,11 +11,11 @@ var Commands = []*xcli.Command{
 		Options: []*xcli.Option{
 			{
 				Names: []string{"a", "addr"},
-				Short: "\tListen to the specified address",
+				Usage: "\tListen to the specified address",
 			},
 			{
 				Names: []string{"d", "daemon"},
-				Short: "\tRun in the background",
+				Usage: "\tRun in the background",
 			},
 		},
 		RunI: &APICommand{},
