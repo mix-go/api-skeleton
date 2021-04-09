@@ -13,7 +13,6 @@ func init() {
 		New: func() (i interface{}, e error) {
 			return xorm.NewEngine("mysql", dotenv.Getenv("DATABASE_DSN").String())
 		},
-		Singleton: true,
 	}
 	if err := xdi.Provide(&obj); err != nil {
 		panic(err)

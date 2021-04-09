@@ -11,7 +11,6 @@ func init() {
 		New: func() (i interface{}, e error) {
 			return &http.Server{}, nil
 		},
-		Singleton: true,
 	}
 	if err := xdi.Provide(&obj); err != nil {
 		panic(err)

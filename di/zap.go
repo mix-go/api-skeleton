@@ -45,7 +45,6 @@ func init() {
 			}
 			return logger.Sugar(), nil
 		},
-		Singleton: true,
 	}
 	if err := xdi.Provide(&obj); err != nil {
 		panic(err)

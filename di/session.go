@@ -21,7 +21,6 @@ func init() {
 			opt := redis.NewRedisStore(&opts)
 			return session.NewManager(session.SetStore(opt)), nil
 		},
-		Singleton: true,
 	}
 	if err := xdi.Provide(&obj); err != nil {
 		panic(err)

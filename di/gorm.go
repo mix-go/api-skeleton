@@ -13,7 +13,6 @@ func init() {
 		New: func() (i interface{}, e error) {
 			return gorm.Open(mysql.Open(dotenv.Getenv("DATABASE_DSN").String()))
 		},
-		Singleton: true,
 	}
 	if err := xdi.Provide(&obj); err != nil {
 		panic(err)
