@@ -23,8 +23,8 @@ require (
 	github.com/json-iterator/go v1.1.10 // indirect
 	github.com/leodido/go-urn v1.2.1 // indirect
 	github.com/mix-go/dotenv v1.0.22
-	github.com/mix-go/xcli v1.1.4
-	github.com/mix-go/xdi v1.1.4
+	github.com/mix-go/xcli v1.1.5
+	github.com/mix-go/xdi v1.1.5
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.1 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
