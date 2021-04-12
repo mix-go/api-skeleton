@@ -57,3 +57,12 @@ func Zap() (logger *zap.SugaredLogger) {
 	}
 	return
 }
+
+type ZapOutput struct {
+	Logger *zap.SugaredLogger
+}
+
+func (t *ZapOutput) Write(p []byte) (n int, err error) {
+	t.Logger.Info(string(p))
+	return len(p), nil
+}
