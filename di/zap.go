@@ -15,7 +15,7 @@ func init() {
 	obj := xdi.Object{
 		Name: "zap",
 		New: func() (i interface{}, e error) {
-			filename := fmt.Sprintf("%s/../logs/mix.log", xcli.App().BasePath)
+			filename := fmt.Sprintf("%s/../runtime/logs/mix.log", xcli.App().BasePath)
 			fileRotate := &lumberjack.Logger{
 				Filename:   filename,
 				MaxBackups: 7,
