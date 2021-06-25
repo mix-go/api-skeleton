@@ -20,6 +20,7 @@ func init() {
 				Filename:   filename,
 				MaxBackups: 7,
 			}
+			atomicLevel := zap.NewAtomicLevelAt(zap.InfoLevel)
 			core := zapcore.NewCore(
 				zapcore.NewConsoleEncoder(zapcore.EncoderConfig{
 					TimeKey:       "T",
@@ -37,11 +38,11 @@ func init() {
 					EncodeCaller:   zapcore.ShortCallerEncoder,
 				}),
 				zapcore.NewMultiWriteSyncer(zapcore.AddSync(os.Stdout), zapcore.AddSync(fileRotate)),
-				zap.InfoLevel,
+				atomicLevel,
 			)
 			logger := zap.New(core, zap.AddCaller())
 			if xcli.App().Debug {
-				logger.Core().Enabled(zap.DebugLevel)
+				atomicLevel.SetLevel(zap.DebugLevel)
 			}
 			return logger.Sugar(), nil
 		},
