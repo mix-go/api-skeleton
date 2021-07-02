@@ -6,7 +6,7 @@ import (
 	"github.com/mix-go/api-skeleton/middleware"
 )
 
-func SetRoutes(router *gin.Engine) {
+func Load(router *gin.Engine) {
 	router.Use(gin.Recovery()) // error handle
 
 	router.GET("hello",
